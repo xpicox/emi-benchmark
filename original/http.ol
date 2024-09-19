@@ -6,6 +6,7 @@ service PubCat {
 		location: "socket://localhost:8080"
 		protocol: http {
 			format = "json"
+      compression = false
 			osc << {
 				getAuthorPubs << {
 					template = "/author/{authorId}"
@@ -21,38 +22,4 @@ service PubCat {
 	}
 
   main { linkIn( Exit ) }
-}
-
-// TEST
-from .pubcat import PubCatInterface
-from console import Console
-from string-utils import StringUtils
-
-service Test {
-  outputPort pc {
-		location: "socket://localhost:8080"
-		protocol: http {
-			format = "json"
-			osc << {
-				getAuthorPubs << {
-					alias = "/author/{authorId}"
-					method = "get"
-				}
-				getConfPubs << {
-					alias = "/conf/{confId}"
-					method = "get"
-				}
-			}
-		}
-    interfaces: PubCatInterface
-  }
-  embed Console as c
-  embed StringUtils as su
-
-  main {
-    println@c( "---- SERVICE START ----" )()
-    getAuthorPubs@pc( { authorId = "" } )( res )
-    valueToPrettyString@su( res )( pretty )
-    println@c( pretty )()
-  }
 }

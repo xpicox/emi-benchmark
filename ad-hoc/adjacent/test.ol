@@ -31,7 +31,7 @@ service Test {
 
   main {
     println@c( "---- SERVICE START ----" )()
-    getAuthorPubs@pc( { authorId = "" key = "valid-key"} )( res )
+    getAuthorPubs@pc( { authorId = "0" key = "valid-key"} )( res )
     valueToPrettyString@su( res )( pretty )
     println@c( pretty )()
     install( NotAuthorised => println@c( "Invalid Key" )() )

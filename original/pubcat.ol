@@ -11,7 +11,7 @@ interface PubCatInterface {
 
 constants {
 	AuthorId = "101/0317",
-  PubsCount = 5
+  PubsCount = 2
 }
 
 service PubCat {
@@ -53,7 +53,7 @@ service Test {
 
   main {
     println@c( "---- SERVICE START ----" )()
-    getAuthorPubs@pc( { authorId = "" } )( res )
+    getAuthorPubs@pc( { authorId = "0" } )( res )
     valueToPrettyString@su( res )( pretty )
     println@c( pretty )()
   }

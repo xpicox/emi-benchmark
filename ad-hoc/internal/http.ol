@@ -1,7 +1,4 @@
-
-from console import Console
-from string-utils import StringUtils
-from ..embeddable.main import PubCat as PubCatImpl
+from .pubcat import PubCat as PubCatImpl, PubCatWithAPIKeyInterface
 
 service PubCat {
   embed PubCatImpl as pc
@@ -9,6 +6,7 @@ service PubCat {
 		location: "socket://localhost:8080"
     protocol: http {
 			format = "json"
+      compression = flase
 			osc << {
 				getAuthorPubs << {
 					template = "/author/{authorId}"
@@ -33,16 +31,4 @@ service PubCat {
  
 // http -p HBhb get localhost:8080/author/123 'Authorization:valid-key'
 /*
-service Test {
-  embed PubCat as pc
-  embed Console as c
-  embed StringUtils as su
-
-  main {
-    println@c( "---- SERVICE START ----" )()
-    getAuthorPubs@pc( { authorId = "" } )( res )
-    valueToPrettyString@su( res )( pretty )
-    println@c( pretty )()
-  }
-}
 */

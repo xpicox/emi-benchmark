@@ -1,11 +1,11 @@
 from console import Console
 from string-utils import StringUtils
 from runtime import Runtime
-from ...ad-hoc.internal.pubcat import PubCatWithAPIKeyInterface
+from .http import PubCatWithAPIKeyInterface
 
 service Test {
   outputPort pc {
-		location: "socket://localhost:8081"
+		location: "socket://localhost:8080"
 		protocol: http {
 			format = "json"
       compression = false
@@ -31,8 +31,7 @@ service Test {
   embed Runtime as rt
 
   init {
-    dependencies[0] << { service = "PubCat" filepath = "../../original/http.ol" }
-    dependencies[1] << { service = "PubCatWithAPIKey" filepath = "pubcat.ol" }
+    dependencies[0] << { service = "PubCat" filepath = "http.ol" }
     println@c( "---- EMBEDDING DEPENDENCIES ----" )()
     for( service in dependencies ) {
       print@c( "Embedding " + service.service + "[" + service.filepath + "]: " )()
@@ -40,15 +39,9 @@ service Test {
       println@c( "done!" )()
     }
   }
-
   main {
     println@c( "---- SERVICE START ----" )()
-    getAuthorPubs@pc( { authorId = "0" key = "valid-key"} )( res )
-    valueToPrettyString@su( res )( pretty )
-    println@c( pretty )()
-    install( NotAuthorised => println@c( "Received NotAuthorised" )() )
-    print@c( "Sending invalid key: " )()
-    getAuthorPubs@pc( { authorId = "0" key = ""} )( res )
+    getAuthorPubs@pc( { authorId = "0" key = "valid-key" } )( res )
     valueToPrettyString@su( res )( pretty )
     println@c( pretty )()
   }
