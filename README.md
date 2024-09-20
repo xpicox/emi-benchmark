@@ -21,8 +21,8 @@ interface PubCatInterface {
     ```jolie
     location: "socket://localhost:8080"
     protocol: http {
-        "/author/{authorId}" -> getAuthorPubs( {authorId} )
-        "/conf/{confId}" -> getConfPubs( {confId} )
+        URI: "/author/{authorId}" -> getAuthorPubs( {authorId} )
+        URI: "/conf/{confId}" -> getConfPubs( {confId} )
     }
     ```
 ### Refactored API - Publication Catalogue with API-Key
