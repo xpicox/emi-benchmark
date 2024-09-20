@@ -84,6 +84,8 @@
         URI: "/conf/{confId}" -> getConfPubs( {confId, key} )
     }
     ```
+- Merge Endpoints [merge-endpoints/pub-index.ol](merge-endpoints/pub-index.ol)
+- Version Identifier [version-identifier/pubcat-gateway.ol](version-identifier/pubcat-gateway.ol)
 
 ## Usage
 
