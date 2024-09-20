@@ -1,5 +1,6 @@
 # EMI Framework
 
+![EMI](tex/emi-framework.png)
 
 ## Organization
 
