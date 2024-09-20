@@ -4,16 +4,18 @@
 
 ## Organization
 
-- Original API
+- Original API - Publication Catalogue
+```jolie
+interface PubCatInterface {
+  RequestResponse:
+    getAuthorPubs( {authorId:string} )( Publications ),
+    getConfPubs( {confId:string} )( Publications )
+}
+```
   - Implementation [original/pubcat.ol](original/pubcat.ol)
     ```jolie
     location: "local"
     protocol: sodep
-    interface PubCatInterface {
-      RequestResponse:
-        getAuthorPubs( {authorId:string} )( Publications ),
-        getConfPubs( {confId:string} )( Publications )
-    }
     ```
   - TCP/HTTP Endpoint [original/http.ol](original/http.ol)
     ```jolie
@@ -24,16 +26,18 @@
     }
     ```
 - Refactored API with API-Key
+```jolie
+interface PubCatWithAPIKeyInterface {
+  RequestResponse:
+    getAuthorPubs( {authorId: string, key: string} )( Publications ) throws NotAuthorised,
+    getConfPubs( {confId: string, key: string} )( Publications ) throws NotAuthorised
+}
+```
   - Ad-hoc/Internal
     - Implementation [ad-hoc/internal/pubcat.ol](ad-hoc/internal/pubcat.ol)
       ```jolie
       location: "local"
       protocol: sodep
-      interface PubCatWithAPIKeyInterface {
-        RequestResponse:
-          getAuthorPubs( {authorId: string, key: string} )( Publications ) throws NotAuthorised,
-          getConfPubs( {confId: string, key: string} )( Publications ) throws NotAuthorised
-      }
       ```
     - TCP/HTTP Endpoint [ad-hoc/internal/http.ol](ad-hoc/internal/http.ol)
       ```jolie
