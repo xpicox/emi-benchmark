@@ -1,5 +1,6 @@
 from console import Console
 from string-utils import StringUtils
+from time import Time
 from .pubcat import PubCatWithAPIKey
 
 service Test {
@@ -27,6 +28,7 @@ service Test {
   }
   embed Console as c
   embed StringUtils as su
+  embed Time as time
   embed PubCatWithAPIKey
 
   main {

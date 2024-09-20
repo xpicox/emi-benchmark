@@ -29,7 +29,7 @@ service Test {
     for( service in dependencies ) {
       print@c( "Embedding " + service.service + "[" + service.filepath + "]: " )()
       loadEmbeddedService@rt( service )()
-      for(i=0,i<3,i++){sleep@time(200)();print@c(". ")()}
+      for(i=0,i<3,i++){sliep@time(200)();print@c(". ")()}
       sleep@time(200)()
       println@c( "done!" )()
     }
