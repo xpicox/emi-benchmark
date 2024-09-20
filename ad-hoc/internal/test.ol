@@ -12,13 +12,13 @@ service Test {
       compression = false
 			osc << {
 				getAuthorPubs << {
-					alias = "/author/{authorId}"
+					template = "/author/{authorId}"
 					method = "get"
 					statusCodes.NotAuthorised = 401
 					outHeaders.Authorization = "key"
 				}
 				getConfPubs << {
-					alias = "/conf/{confId}"
+					template = "/conf/{confId}"
 					method = "get"
 					statusCodes.NotAuthorised = 401
 					outHeaders.Authorization = "key"

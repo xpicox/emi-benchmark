@@ -12,11 +12,11 @@ service Test {
       compression = false
 			osc << {
 				getAuthorPubs << {
-					alias = "/author/{authorId}"
+					template = "/author/{authorId}"
 					method = "get"
 				}
 				getConfPubs << {
-					alias = "/conf/{confId}"
+					template = "/conf/{confId}"
 					method = "get"
 				}
 			}
