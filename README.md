@@ -4,7 +4,7 @@
 
 ## Organization
 
-- Original API - Publication Catalogue
+### Original API - Publication Catalogue
 ```jolie
 interface PubCatInterface {
   RequestResponse:
@@ -25,7 +25,7 @@ interface PubCatInterface {
         "/conf/{confId}" -> getConfPubs( {confId} )
     }
     ```
-- Refactored API with API-Key
+### Refactored API - Publication Catalogue with API-Key
 ```jolie
 interface PubCatWithAPIKeyInterface {
   RequestResponse:
@@ -88,6 +88,7 @@ interface PubCatWithAPIKeyInterface {
         URI: "/conf/{confId}" -> getConfPubs( {confId, key} )
     }
     ```
+### Additional patterns
 - Merge Endpoints [merge-endpoints/pub-index.ol](merge-endpoints/pub-index.ol)
 - Version Identifier [version-identifier/pubcat-gateway.ol](version-identifier/pubcat-gateway.ol)
 
