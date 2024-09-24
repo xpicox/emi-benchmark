@@ -90,6 +90,15 @@ interface PubCatWithAPIKeyInterface {
     ```
 ### Additional patterns
 - Merge Endpoints [merge-endpoints/pub-index.ol](merge-endpoints/pub-index.ol)
+  HTTP Endpoint [merge-endpoints/http.ol](merge-endpoints/http.ol)
+  ```jolie
+  location: "local"
+  protocol: http {
+      URI: "/author/{authorId}" -> getAuthorPubs( {authorId} )
+      URI: "/conf/{confId}" -> getConfPubs( {confId} )
+      URI: "/citations/{pubId}" -> getCitingPubs( {pubId} )
+  }
+  ```
 - Version Identifier [version-identifier/pubcat-gateway.ol](version-identifier/pubcat-gateway.ol)
 
 ## Usage
