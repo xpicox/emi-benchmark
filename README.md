@@ -1,6 +1,6 @@
 # EMI Framework
 
-![EMI](tex/emi-framework.png)
+<img src="tex/emi-framework.jpg" title="EMI Framework" width="500"/>
 
 ## Organization
 
